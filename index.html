@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ぬりかべ</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            position: relative;
+        }
+        .nurikabe {
+            width: 200px;
+            height: 250px;
+            background-color: #888;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .face {
+            position: absolute;
+            top: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .eyes {
+            display: flex;
+            justify-content: space-between;
+            width: 60px;
+        }
+        .eye {
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        .mouth {
+            width: 40px;
+            height: 10px;
+            background-color: black;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .arms {
+            position: absolute;
+            width: 250px;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+        }
+        .arm {
+            width: 40px;
+            height: 20px;
+            background-color: #888;
+            border-radius: 10px;
+        }
+        .feet {
+            position: absolute;
+            bottom: -20px;
+            display: flex;
+            justify-content: space-between;
+            width: 80px;
+        }
+        .foot {
+            width: 30px;
+            height: 20px;
+            background-color: #888;
+            border-radius: 10px;
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .random-image {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+        canvas {
+            position: absolute;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let count = localStorage.getItem("visitCount") || 0;
+            count++;
+            localStorage.setItem("visitCount", count);
+            document.getElementById("visitorCount").textContent = count;
+            
+            // Canvasに画像をランダムな位置に描画
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+            let image = new Image();
+            image.src = "kimigatame.png";
+            image.onload = function() {
+                let randomX = Math.random() * (window.innerWidth - 150);
+                let randomY = Math.random() * (window.innerHeight - 150);
+                canvas.style.left = `${randomX}px`;
+                canvas.style.top = `${randomY}px`;
+                ctx.drawImage(image, 0, 0, 150, 150);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div class="nurikabe">
+        <div class="face">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="mouth"></div>
+        </div>
+        <div class="arms">
+            <div class="arm"></div>
+            <div class="arm"></div>
+        </div>
+        <div class="feet">
+            <div class="foot"></div>
+            <div class="foot"></div>
+        </div>
+    </div>
+    <div class="counter">あなたは <span id="visitorCount">0</span> 人目のぬりかべ</div>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+</html>
