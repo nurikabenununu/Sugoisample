@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    position: relative;
+}
+
+.nurikabe {
+    width: 200px;
+    height: 250px;
+    background-color: #888;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.face {
+    position: absolute;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+}
+
+.eye {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.mouth {
+    width: 40px;
+    height: 10px;
+    background-color: black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.arms {
+    position: absolute;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+}
+
+.arm {
+    width: 40px;
+    height: 20px;
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.feet {
+    position: absolute;
+    bottom: -20px;
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+}
+
+.foot {
+    width: 30px;
+    height: 20px;
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.counter {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.random-image {
+    position: absolute;
+    width: 100px;
+    height: auto;
+}
+
+canvas {
+    position: absolute;
+}
